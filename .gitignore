@@ -1,0 +1,4 @@
+.cabal-sandbox/
+dist/
+libv8wrapper.dylib
+src/v8wrapper.o

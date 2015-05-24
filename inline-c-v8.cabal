@@ -1,0 +1,23 @@
+name:                inline-c-v8
+version:             0.1.0.0
+license:             AllRightsReserved
+license-file:        LICENSE
+author:              Tomohito Ozaki
+maintainer:          ozaki@yuroyoro.com
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable inline-c-v8
+  main-is:             Main.hs
+  hs-source-dirs:      src
+  build-depends:       base >=4 && <5
+                     , bytestring
+                     , inline-c
+  default-language:    Haskell2010
+
+  -- Here the corresponding C sources must be listed for every module
+  -- that uses C snippets.  Presumably we could automatically generate
+  -- this.
+  c-sources:           src/Main.c
+  cc-options:          -Wall -L. -I/usr/include -I/usr/local/Cellar/v8/3.19.18.4/include -lv8wrapper -lv8  -lstdc++
+  ghc-options:         -Wall -L. -I/usr/include -I/usr/local/Cellar/v8/3.19.18.4/include -lv8wrapper -lv8  -lstdc++
